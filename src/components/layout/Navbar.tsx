@@ -20,7 +20,6 @@ export default function Navbar() {
     { label: t("nav.services"), href: "#services" },
     { label: t("nav.whyUs"), href: "#why-us" },
     { label: t("nav.about"), href: "#about" },
-    { label: t("nav.coverage"), href: "#coverage" },
     { label: t("nav.contact"), href: "#contact" },
   ];
 
