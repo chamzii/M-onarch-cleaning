@@ -1,72 +1,77 @@
 "use client";
 import { motion } from "framer-motion";
-import { Building2, Sparkles, Layers, CalendarCheck } from "lucide-react";
 import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
 const tiles = [
-  { icon: Building2, label: "Office Cleaning" },
-  { icon: Sparkles, label: "Deep Cleaning" },
-  { icon: Layers, label: "Floor Care" },
-  { icon: CalendarCheck, label: "Scheduled Plans" },
+  { emoji: "🏢", label: "Office Areas" },
+  { emoji: "🍽️", label: "Break Rooms" },
+  { emoji: "🪑", label: "Common Areas" },
+  { emoji: "🪟", label: "Meeting Rooms" },
 ];
 
 export default function Hero() {
-  const { t } = useLang();
-
+  useLang();
   return (
-    <section id="hero" className="relative flex flex-col" style={{ marginTop: "105px" }}>
-      {/* Hero image area */}
-      <div className="relative min-h-[580px] flex items-center"
+    <section className="flex flex-col" style={{ marginTop: "73px" }}>
+      {/* Hero image */}
+      <div
+        className="relative min-h-[520px] flex items-center"
         style={{
-          backgroundImage: "linear-gradient(rgba(20,40,20,0.62), rgba(20,40,20,0.62)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80')",
+          backgroundImage: "linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 w-full py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
+        <div className="max-w-7xl mx-auto px-6 w-full py-20 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
+            transition={{ duration: 0.6 }}
+            className="font-display font-bold text-white leading-tight"
+            style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
           >
-            <h1 className="font-display font-bold text-white leading-tight"
-              style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
-              {t("hero.title")} <span style={{ color: "#7DC442" }}>{t("hero.titleHighlight")}</span>
-            </h1>
-            <p className="mt-5 text-white/80 text-lg leading-relaxed max-w-xl">
-              {t("hero.subtitle")}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/quote" className="btn-green text-base px-8 py-4">
-                {t("hero.cta1")}
-              </Link>
-              <a href="tel:+46XXXXXXXXX" className="btn-outline text-base px-8 py-4">
-                Call Us
-              </a>
-            </div>
+            Enjoy Your Freshly Cleaned Office
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-5 text-white/85 text-xl max-w-2xl mx-auto"
+          >
+            Professional office cleaning that leaves you stress-free
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-4"
+          >
+            <Link href="/quote" className="btn-green text-base px-8 py-4">
+              Get A Free Estimate
+            </Link>
+            <a href="tel:+46XXXXXXXXX" className="btn-outline text-base px-8 py-4">
+              Call Us
+            </a>
           </motion.div>
         </div>
       </div>
 
-      {/* 4 service tiles */}
-      <div className="bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4">
+      {/* 4 area tiles */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200">
             {tiles.map((tile, i) => (
               <motion.a
                 key={tile.label}
                 href="#services"
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.08 }}
-                className="flex flex-col items-center gap-3 py-8 px-4 border-r border-border last:border-r-0 hover:bg-green-100 transition-colors duration-200 group"
+                transition={{ delay: 0.4 + i * 0.08 }}
+                className="flex flex-col items-center gap-3 py-8 px-6 hover:bg-green-50 transition-colors group"
               >
-                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-600 transition-colors duration-200">
-                  <tile.icon size={24} className="text-green-600 group-hover:text-white transition-colors duration-200" />
-                </div>
-                <span className="font-body font-semibold text-navy text-sm text-center">{tile.label}</span>
+                <span className="text-4xl">{tile.emoji}</span>
+                <span className="font-body font-semibold text-navy text-sm group-hover:text-green-600 transition-colors">{tile.label}</span>
               </motion.a>
             ))}
           </div>

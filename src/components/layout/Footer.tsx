@@ -1,75 +1,58 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 
-const InstagramIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-  </svg>
-);
-const FacebookIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-  </svg>
-);
-const LinkedinIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
+const services = ["Office Cleaning", "Deep Cleaning", "Scheduled Plans", "Commercial Property"];
+const company = [
+  { label: "Our Services", href: "#services" },
+  { label: "About Us", href: "#about" },
+  { label: "Why Hire Us?", href: "#why-us" },
+  { label: "How It Works", href: "#process" },
+  { label: "Free Estimate", href: "/quote" },
+];
+const areas = ["Norrtälje", "Hallstavik", "Rimbo", "Herräng", "Älmsta", "Väddö"];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const services = ["Office Cleaning", "Deep Cleaning", "Window Cleaning", "Floor Care", "Daily & Weekly", "Commercial Property"];
-  const company = [
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Coverage", href: "#coverage" },
-    { label: "Contact", href: "#contact" },
-    { label: "Get Free Quote", href: "/quote" },
-  ];
-  const areas = ["Norrtälje", "Hallstavik", "Rimbo", "Herräng", "Älmsta", "Väddö"];
-
   return (
-    <footer className="bg-charcoal border-t border-white/5 relative overflow-hidden">
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full bg-gold/4 blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+    <footer style={{ backgroundColor: "#1C2B1C" }}>
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-1">
+
+          {/* Brand */}
+          <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full border border-gold flex items-center justify-center">
-                <span className="font-display text-gold text-xl font-semibold">M</span>
+              <div className="w-10 h-10 rounded bg-green-600 flex items-center justify-center shrink-0">
+                <span className="font-display font-bold text-white text-lg">M</span>
               </div>
-              <div>
-                <span className="font-display text-white font-semibold tracking-[0.15em] text-sm block">MONARCH</span>
-                <span className="font-body text-gold/60 text-[9px] tracking-[0.3em] uppercase">CLEANING</span>
-              </div>
+              <span className="font-display font-bold text-white text-xl">Monarch Cleaning</span>
             </div>
-            <p className="font-body text-white/40 text-sm leading-relaxed">
-              Premium office cleaning across the Norrtälje region. Reliable, eco-friendly, professional.
+            <p className="text-white/50 text-sm leading-relaxed">
+              Professional office cleaning across the Norrtälje region. Reliable, consistent, and always on time.
             </p>
-            <div className="flex items-center gap-3 mt-6">
-              {[InstagramIcon, FacebookIcon, LinkedinIcon].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-gold/40 hover:bg-gold/10 hover:text-gold transition-all duration-200">
-                  <Icon />
-                </a>
-              ))}
+            <div className="mt-6 space-y-2">
+              <div className="flex items-center gap-2 text-white/50 text-sm">
+                <Phone size={14} className="text-green-500 shrink-0" />
+                +46 XXX XXX XXX
+              </div>
+              <div className="flex items-center gap-2 text-white/50 text-sm">
+                <Mail size={14} className="text-green-500 shrink-0" />
+                info@monarchcleaning.se
+              </div>
+              <div className="flex items-start gap-2 text-white/50 text-sm">
+                <MapPin size={14} className="text-green-500 shrink-0 mt-0.5" />
+                Norrtälje Region, Sweden
+              </div>
             </div>
           </div>
 
+          {/* Services */}
           <div>
-            <h4 className="font-body text-white text-xs uppercase tracking-widest mb-5 font-semibold">Services</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Services</h4>
+            <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s}>
-                  <a href="#services" className="font-body text-sm text-white/40 hover:text-gold transition-colors duration-200 flex items-center gap-2 group">
-                    <span className="w-3 h-px bg-gold/30 group-hover:w-5 group-hover:bg-gold transition-all duration-300" />
+                  <a href="#services" className="text-white/50 text-sm hover:text-green-400 transition-colors">
                     {s}
                   </a>
                 </li>
@@ -77,13 +60,13 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
           <div>
-            <h4 className="font-body text-white text-xs uppercase tracking-widest mb-5 font-semibold">Company</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Company</h4>
+            <ul className="space-y-3">
               {company.map((c) => (
                 <li key={c.label}>
-                  <Link href={c.href} className="font-body text-sm text-white/40 hover:text-gold transition-colors duration-200 flex items-center gap-2 group">
-                    <span className="w-3 h-px bg-gold/30 group-hover:w-5 group-hover:bg-gold transition-all duration-300" />
+                  <Link href={c.href} className="text-white/50 text-sm hover:text-green-400 transition-colors">
                     {c.label}
                   </Link>
                 </li>
@@ -91,33 +74,27 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Service Area */}
           <div>
-            <h4 className="font-body text-white text-xs uppercase tracking-widest mb-5 font-semibold">Service Area</h4>
-            <div className="flex flex-wrap gap-2 mb-7">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Service Area</h4>
+            <div className="flex flex-wrap gap-2">
               {areas.map((a) => (
-                <span key={a} className="font-body text-xs text-white/40 border border-white/10 px-3 py-1 rounded-full">{a}</span>
+                <span key={a} className="text-white/50 text-xs border border-white/15 px-3 py-1 rounded-full">
+                  {a}
+                </span>
               ))}
             </div>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 font-body text-sm text-white/40">
-                <Phone size={13} className="text-gold shrink-0" />
-                +46 XXX XXX XXX
-              </li>
-              <li className="flex items-center gap-2 font-body text-sm text-white/40">
-                <Mail size={13} className="text-gold shrink-0" />
-                info@monarchcleaning.se
-              </li>
-              <li className="flex items-start gap-2 font-body text-sm text-white/40">
-                <MapPin size={13} className="text-gold shrink-0 mt-0.5" />
-                Norrtälje Region, Sweden
-              </li>
-            </ul>
+            <div className="mt-8">
+              <Link href="/quote" className="btn-green text-sm px-6 py-3 rounded inline-block">
+                Free Estimate
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-white/25 text-xs">© {year} Monarch Cleaning. All rights reserved.</p>
-          <p className="font-body text-white/20 text-xs">Herräng · Hallstavik · Rimbo · Norrtälje</p>
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/30 text-xs">© {year} Monarch Cleaning. All rights reserved.</p>
+          <p className="text-white/20 text-xs">Herräng · Hallstavik · Rimbo · Norrtälje</p>
         </div>
       </div>
     </footer>
