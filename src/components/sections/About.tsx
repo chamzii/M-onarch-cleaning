@@ -65,6 +65,7 @@ export default function About() {
             >
               <p className="text-lg">{t("about.body1")}</p>
               <p>{t("about.body2")}</p>
+              <p>{t("about.body3")}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}

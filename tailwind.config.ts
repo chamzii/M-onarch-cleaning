@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Cormorant Garamond'", "Georgia", "serif"],
+        display: ["'Plus Jakarta Sans'", "'Inter'", "sans-serif"],
         body: ["'Inter'", "sans-serif"],
       },
       colors: {

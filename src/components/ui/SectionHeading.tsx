@@ -20,18 +20,25 @@ export default function SectionHeading({ eyebrow, title, titleHighlight, subtitl
       className={centered ? "text-center" : ""}
     >
       {eyebrow && (
-        <p className={`font-body text-xs tracking-[0.35em] uppercase mb-4 ${light ? "text-gold-light" : "text-gold"}`}>
-          — {eyebrow} —
-        </p>
+        <div className={`inline-flex items-center gap-2 mb-6 ${centered ? "justify-center" : ""}`}>
+          <span className="h-px w-8 bg-gold" />
+          <p className={`font-body text-sm font-semibold tracking-[0.25em] uppercase ${light ? "text-gold-light" : "text-gold"}`}>
+            {eyebrow}
+          </p>
+          <span className="h-px w-8 bg-gold" />
+        </div>
       )}
-      <h2 className={`font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight ${light ? "text-white" : "text-charcoal"}`}>
+      <h2
+        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white" : "text-charcoal"}`}
+        style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)" }}
+      >
         {title}{" "}
         {titleHighlight && (
-          <em className="not-italic" style={{ color: "#B8973A" }}>{titleHighlight}</em>
+          <span style={{ color: "#B8973A" }}>{titleHighlight}</span>
         )}
       </h2>
       {subtitle && (
-        <p className={`mt-5 font-body text-lg max-w-2xl mx-auto leading-relaxed ${light ? "text-white/70" : "text-slate"}`}>
+        <p className={`mt-6 font-body text-lg md:text-xl max-w-3xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/65" : "text-slate"}`}>
           {subtitle}
         </p>
       )}

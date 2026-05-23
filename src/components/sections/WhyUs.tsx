@@ -28,7 +28,7 @@ export default function WhyUs() {
           subtitle={t("whyUs.subtitle")}
           light
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, i) => {
             const Icon = icons[i];
             return (
@@ -38,13 +38,13 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group p-7 rounded-2xl border border-white/8 hover:border-gold/30 bg-white/3 hover:bg-white/5 transition-all duration-300"
+                className="group p-9 rounded-3xl border border-white/8 hover:border-gold/30 bg-white/3 hover:bg-white/6 transition-all duration-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center mb-5 group-hover:bg-gold/25 transition-colors duration-300">
-                  <Icon size={20} className="text-gold" />
+                <div className="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mb-7 group-hover:bg-gold transition-colors duration-300">
+                  <Icon size={24} className="text-gold group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-white mb-2">{item.title}</h3>
-                <p className="font-body text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-display font-bold text-white text-xl mb-4">{item.title}</h3>
+                <p className="font-body text-white/55 leading-relaxed">{item.desc}</p>
               </motion.div>
             );
           })}
