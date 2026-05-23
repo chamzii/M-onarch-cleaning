@@ -9,8 +9,8 @@ export default function About() {
   const { t } = useLang();
 
   return (
-    <section id="about" className="section-padding bg-silver relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold/4 blur-[150px] pointer-events-none" />
+    <section id="about" className="section-padding bg-charcoal relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold/6 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -38,13 +38,13 @@ export default function About() {
               <div className="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-gold/30 rounded-br-lg" />
             </div>
 
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl px-6 py-5 shadow-xl border border-silver">
-              <p className="font-display text-4xl font-semibold text-gold">{t("about.stat1")}</p>
-              <p className="font-body text-xs text-slate uppercase tracking-widest mt-1">{t("about.stat1Label")}</p>
+            <div className="absolute -bottom-6 -right-6 bg-surface-2 rounded-2xl px-6 py-5 shadow-xl border border-white/10">
+              <p className="font-display text-4xl font-bold text-gold">{t("about.stat1")}</p>
+              <p className="font-body text-xs text-white/50 uppercase tracking-widest mt-1">{t("about.stat1Label")}</p>
             </div>
-            <div className="absolute -top-6 -left-6 bg-charcoal rounded-2xl px-6 py-5 shadow-xl">
-              <p className="font-display text-4xl font-semibold text-gold">{t("about.stat2")}</p>
-              <p className="font-body text-xs text-white/50 uppercase tracking-widest mt-1">{t("about.stat2Label")}</p>
+            <div className="absolute -top-6 -left-6 bg-gold rounded-2xl px-6 py-5 shadow-xl">
+              <p className="font-display text-4xl font-bold text-white">{t("about.stat2")}</p>
+              <p className="font-body text-xs text-white/70 uppercase tracking-widest mt-1">{t("about.stat2Label")}</p>
             </div>
           </motion.div>
 
@@ -61,7 +61,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-8 space-y-5 font-body text-slate leading-relaxed"
+              className="mt-8 space-y-5 font-body text-white/60 leading-relaxed"
             >
               <p className="text-lg">{t("about.body1")}</p>
               <p>{t("about.body2")}</p>

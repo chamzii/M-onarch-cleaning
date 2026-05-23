@@ -5,12 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --snow: #FAFAFA;
-  --charcoal: #1A1A2E;
-  --slate: #4A5568;
+  --ink: #0B0B14;
+  --charcoal: #14141F;
+  --surface: #1C1C2A;
+  --surface-2: #232333;
+  --slate: #8892A4;
   --gold: #B8973A;
   --gold-light: #D4AF5A;
-  --silver: #E8EDF2;
 }
 
 * {
@@ -24,8 +25,8 @@ html {
 }
 
 body {
-  background-color: #FAFAFA;
-  color: #1A1A2E;
+  background-color: #0B0B14;
+  color: #E8E8F0;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   line-height: 1.75;
@@ -33,14 +34,14 @@ body {
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #FAFAFA; }
+::-webkit-scrollbar-track { background: #0B0B14; }
 ::-webkit-scrollbar-thumb { background: #B8973A; border-radius: 2px; }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(11, 11, 20, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+  border-bottom: 1px solid rgba(184, 151, 58, 0.12);
 }
 
 .section-padding {
@@ -76,10 +77,9 @@ body {
 
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 16px rgba(26, 26, 46, 0.08);
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(26, 26, 46, 0.14);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }

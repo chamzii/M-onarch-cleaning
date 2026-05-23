@@ -29,7 +29,7 @@ export default function SectionHeading({ eyebrow, title, titleHighlight, subtitl
         </div>
       )}
       <h2
-        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white" : "text-charcoal"}`}
+        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white/80" : "text-white"}`}
         style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)" }}
       >
         {title}{" "}
@@ -38,7 +38,7 @@ export default function SectionHeading({ eyebrow, title, titleHighlight, subtitl
         )}
       </h2>
       {subtitle && (
-        <p className={`mt-6 font-body text-lg md:text-xl max-w-3xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/65" : "text-slate"}`}>
+        <p className={`mt-6 font-body text-lg md:text-xl max-w-3xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/55" : "text-white/60"}`}>
           {subtitle}
         </p>
       )}

@@ -11,8 +11,9 @@ export default function Services() {
   const items = t("services.items") as unknown as { title: string; desc: string; detail: string }[];
 
   return (
-    <section id="services" className="section-padding bg-snow">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="services" className="section-padding bg-surface relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-gold/4 blur-[150px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <SectionHeading
           eyebrow={t("services.eyebrow")}
           title={t("services.title")}
@@ -29,14 +30,14 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="card-hover bg-white rounded-3xl p-10 border border-silver-dark group cursor-default flex flex-col"
+                className="card-hover bg-surface-2 rounded-3xl p-10 border border-white/8 group cursor-default flex flex-col hover:border-gold/30 transition-colors duration-300"
               >
-                <div className="w-16 h-16 rounded-2xl bg-charcoal flex items-center justify-center mb-7 group-hover:bg-gold transition-colors duration-300 shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-7 group-hover:bg-gold group-hover:border-gold transition-all duration-300 shrink-0">
                   <Icon size={28} className="text-gold group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-display font-bold text-charcoal text-2xl mb-4">{item.title}</h3>
-                <p className="font-body text-slate leading-relaxed flex-1">{item.desc}</p>
-                <div className="mt-8 pt-6 border-t border-silver flex items-center justify-between">
+                <h3 className="font-display font-bold text-white text-2xl mb-4">{item.title}</h3>
+                <p className="font-body text-white/55 leading-relaxed flex-1">{item.desc}</p>
+                <div className="mt-8 pt-6 border-t border-white/8 flex items-center justify-between">
                   <span className="font-body text-xs text-gold font-semibold uppercase tracking-widest">{item.detail}</span>
                   <div className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center group-hover:bg-gold group-hover:border-gold transition-all duration-300">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-gold group-hover:text-white transition-colors duration-300">

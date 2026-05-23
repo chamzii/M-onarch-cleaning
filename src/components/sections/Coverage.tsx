@@ -9,7 +9,8 @@ export default function Coverage() {
   const areas = t("coverage.areas") as unknown as string[];
 
   return (
-    <section id="coverage" className="section-padding bg-silver">
+    <section id="coverage" className="section-padding bg-surface relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full bg-gold/4 blur-[150px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           eyebrow={t("coverage.eyebrow")}
@@ -17,7 +18,7 @@ export default function Coverage() {
           titleHighlight={t("coverage.titleHighlight")}
           subtitle={t("coverage.subtitle")}
         />
-        <div className="mt-14 grid lg:grid-cols-2 gap-10 items-start">
+        <div className="mt-14 grid lg:grid-cols-2 gap-10 items-start relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -32,14 +33,14 @@ export default function Coverage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-silver-dark group hover:border-gold/30 hover:bg-gold/5 transition-all duration-300 shadow-sm"
+                  className="flex items-center gap-3 bg-surface-2 rounded-xl px-5 py-4 border border-white/8 group hover:border-gold/40 hover:bg-gold/8 transition-all duration-300"
                 >
                   <CheckCircle2 size={18} className="text-gold shrink-0" />
-                  <span className="font-body font-medium text-charcoal text-sm">{area}</span>
+                  <span className="font-body font-medium text-white text-sm">{area}</span>
                 </motion.div>
               ))}
             </div>
-            <p className="mt-6 font-body text-slate text-sm flex items-center gap-2">
+            <p className="mt-6 font-body text-white/50 text-sm flex items-center gap-2">
               <MapPin size={14} className="text-gold" />
               And all surrounding areas in the Norrtälje municipality
             </p>
@@ -50,7 +51,7 @@ export default function Coverage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-2xl overflow-hidden border border-silver shadow-sm aspect-[4/3] relative"
+            className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] relative"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d172000!2d18.65!3d59.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sse!4v1"

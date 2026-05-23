@@ -34,10 +34,10 @@ export default function Navbar() {
               <span className="font-display text-gold text-lg font-semibold leading-none">M</span>
             </div>
             <div>
-              <span className={`font-display font-semibold tracking-[0.15em] text-base block leading-none ${scrolled ? "text-charcoal" : "text-white"}`}>
+              <span className="font-display font-semibold tracking-[0.15em] text-base block leading-none text-white">
                 MONARCH
               </span>
-              <span className={`font-body text-[9px] tracking-[0.3em] uppercase ${scrolled ? "text-slate" : "text-white/70"}`}>
+              <span className="font-body text-[9px] tracking-[0.3em] uppercase text-white/50">
                 CLEANING
               </span>
             </div>
@@ -47,7 +47,7 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-7">
             {links.map((l) => (
               <a key={l.href} href={l.href}
-                className={`font-body text-sm tracking-wide gold-underline transition-colors duration-200 ${scrolled ? "text-slate hover:text-charcoal" : "text-white/80 hover:text-white"}`}>
+                className="font-body text-sm tracking-wide text-white/70 hover:text-white gold-underline transition-colors duration-200">
                 {l.label}
               </a>
             ))}
@@ -57,7 +57,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <button
               onClick={() => setLang(lang === "en" ? "sv" : "en")}
-              className={`font-body text-xs tracking-widest uppercase px-3 py-1.5 rounded-full border transition-all duration-200 ${scrolled ? "border-silver text-slate hover:border-gold hover:text-gold" : "border-white/30 text-white/70 hover:border-gold hover:text-gold"}`}>
+              className="font-body text-xs tracking-widest uppercase px-3 py-1.5 rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-all duration-200">
               {lang === "en" ? "SV" : "EN"}
             </button>
             <Link href="/quote"
@@ -67,7 +67,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile hamburger */}
-          <button onClick={() => setOpen(!open)} className={`md:hidden p-1 ${scrolled ? "text-charcoal" : "text-white"}`} aria-label="Toggle menu">
+          <button onClick={() => setOpen(!open)} className="md:hidden p-1 text-white" aria-label="Toggle menu">
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -81,7 +81,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col pt-24 px-8 pb-12 bg-white"
+            className="fixed inset-0 z-40 flex flex-col pt-24 px-8 pb-12 bg-charcoal"
           >
             <nav className="flex flex-col gap-1">
               {links.map((l, i) => (
@@ -89,14 +89,14 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  className="font-display text-3xl text-charcoal py-3 border-b border-silver hover:text-gold transition-colors">
+                  className="font-display text-3xl text-white py-3 border-b border-white/10 hover:text-gold transition-colors">
                   {l.label}
                 </motion.a>
               ))}
             </nav>
             <div className="mt-8 flex items-center gap-3">
               <button onClick={() => setLang(lang === "en" ? "sv" : "en")}
-                className="font-body text-xs tracking-widest uppercase px-4 py-2 rounded-full border border-silver text-slate hover:border-gold hover:text-gold transition-all">
+                className="font-body text-xs tracking-widest uppercase px-4 py-2 rounded-full border border-white/20 text-white/60 hover:border-gold hover:text-gold transition-all">
                 {lang === "en" ? "SV" : "EN"}
               </button>
               <Link href="/quote" onClick={() => setOpen(false)}
