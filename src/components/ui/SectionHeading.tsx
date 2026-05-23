@@ -13,32 +13,28 @@ interface Props {
 export default function SectionHeading({ eyebrow, title, titleHighlight, subtitle, centered = true, light = false }: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.6 }}
       className={centered ? "text-center" : ""}
     >
       {eyebrow && (
-        <div className={`inline-flex items-center gap-2 mb-6 ${centered ? "justify-center" : ""}`}>
-          <span className="h-px w-8 bg-gold" />
-          <p className={`font-body text-sm font-semibold tracking-[0.25em] uppercase ${light ? "text-gold-light" : "text-gold"}`}>
-            {eyebrow}
-          </p>
-          <span className="h-px w-8 bg-gold" />
-        </div>
+        <p className={`font-body text-sm font-semibold tracking-[0.2em] uppercase mb-4 ${light ? "text-teal-light/80" : "text-teal"}`}>
+          {eyebrow}
+        </p>
       )}
       <h2
-        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white/80" : "text-white"}`}
-        style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)" }}
+        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white" : "text-navy"}`}
+        style={{ fontSize: "clamp(2rem, 4.5vw, 3.8rem)" }}
       >
         {title}{" "}
         {titleHighlight && (
-          <span style={{ color: "#B8973A" }}>{titleHighlight}</span>
+          <span className={light ? "text-teal" : "text-teal"}>{titleHighlight}</span>
         )}
       </h2>
       {subtitle && (
-        <p className={`mt-6 font-body text-lg md:text-xl max-w-3xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/55" : "text-white/60"}`}>
+        <p className={`mt-5 font-body text-lg max-w-2xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/70" : "text-gray"}`}>
           {subtitle}
         </p>
       )}

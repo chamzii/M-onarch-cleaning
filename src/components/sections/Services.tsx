@@ -11,40 +11,32 @@ export default function Services() {
   const items = t("services.items") as unknown as { title: string; desc: string; detail: string }[];
 
   return (
-    <section id="services" className="section-padding bg-surface relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-gold/4 blur-[150px] pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="services" className="section-padding bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           eyebrow={t("services.eyebrow")}
           title={t("services.title")}
           titleHighlight={t("services.titleHighlight")}
           subtitle={t("services.subtitle")}
         />
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, i) => {
             const Icon = icons[i];
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="card-hover bg-surface-2 rounded-3xl p-10 border border-white/8 group cursor-default flex flex-col hover:border-gold/30 transition-colors duration-300"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="card-hover bg-white rounded-2xl p-8 border border-border group cursor-default flex flex-col shadow-sm"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-7 group-hover:bg-gold group-hover:border-gold transition-all duration-300 shrink-0">
-                  <Icon size={28} className="text-gold group-hover:text-white transition-colors duration-300" />
+                <div className="w-12 h-12 rounded-xl bg-teal-light flex items-center justify-center mb-6 group-hover:bg-teal transition-colors duration-300 shrink-0">
+                  <Icon size={22} className="text-teal group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-display font-bold text-white text-2xl mb-4">{item.title}</h3>
-                <p className="font-body text-white/55 leading-relaxed flex-1">{item.desc}</p>
-                <div className="mt-8 pt-6 border-t border-white/8 flex items-center justify-between">
-                  <span className="font-body text-xs text-gold font-semibold uppercase tracking-widest">{item.detail}</span>
-                  <div className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center group-hover:bg-gold group-hover:border-gold transition-all duration-300">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-gold group-hover:text-white transition-colors duration-300">
-                      <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
+                <h3 className="font-display font-bold text-navy text-xl mb-3">{item.title}</h3>
+                <p className="font-body text-gray leading-relaxed flex-1 text-base">{item.desc}</p>
+                <p className="mt-5 font-body text-xs text-teal font-semibold uppercase tracking-widest">{item.detail}</p>
               </motion.div>
             );
           })}
