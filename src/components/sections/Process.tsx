@@ -1,31 +1,40 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
-const steps = [
-  {
-    number: "01",
-    title: "Get a Free Estimate",
-    desc: "Fill out our quick form or give us a call. We'll assess your space and provide a clear, no-obligation quote.",
-  },
-  {
-    number: "02",
-    title: "We Create Your Plan",
-    desc: "We build a customized cleaning plan around your schedule — daily, weekly, or bi-weekly. Zero disruption to your team.",
-  },
-  {
-    number: "03",
-    title: "Meet Your Cleaning Team",
-    desc: "Your dedicated Monarch team arrives on time, fully equipped, and ready to deliver a thorough, consistent clean.",
-  },
-  {
-    number: "04",
-    title: "Enjoy Your Clean Office",
-    desc: "Come in to a spotless workspace every time. We handle the cleaning so you can focus on what matters most.",
-  },
-];
-
 export default function Process() {
+  const { lang, t } = useLang();
+  const steps = t("process.steps") as { number: string; title: string; desc: string }[];
+
+  const sv = {
+    banner: {
+      heading: "Spara tid. Spara pengar.\nSpara dig krånglet.",
+      sub: "Professionell kontorsstädning du kan lita på — varje besök, varje gång.",
+      cta1: "Få gratis offert",
+      cta2: "Ring oss",
+    },
+    eyebrow: "Enkel process",
+    title: "Hur det",
+    highlight: "fungerar",
+    sub: "Att komma igång är enkelt. Vi gör hela processen smidig från ditt första samtal till ditt renaste kontor någonsin.",
+  };
+
+  const en = {
+    banner: {
+      heading: "Save Time. Save Money.\nSave Yourself the Hassle.",
+      sub: "Professional office cleaning you can count on — every visit, every time.",
+      cta1: "Get Free Estimate",
+      cta2: "Call Us",
+    },
+    eyebrow: "Simple Process",
+    title: "How It",
+    highlight: "Works",
+    sub: "Getting started is easy. We make the whole process simple from your first call to your cleanest office ever.",
+  };
+
+  const c = lang === "sv" ? sv : en;
+
   return (
     <>
       {/* Dark green CTA banner */}
@@ -33,24 +42,24 @@ export default function Process() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="font-display font-bold text-white leading-tight" style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)" }}>
-              Save Time. Save Money.<br />Save Yourself the Hassle.
+              {c.banner.heading.split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h2>
-            <p className="mt-3 text-white/80 text-lg max-w-lg">
-              Professional office cleaning you can count on — every visit, every time.
-            </p>
+            <p className="mt-3 text-white/80 text-lg max-w-lg">{c.banner.sub}</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <Link
               href="/quote"
               className="inline-flex items-center justify-center bg-white text-green-700 font-bold px-8 py-4 rounded text-base hover:bg-green-50 transition-colors"
             >
-              Get Free Estimate
+              {c.banner.cta1}
             </Link>
             <a
               href="tel:+46XXXXXXXXX"
               className="inline-flex items-center justify-center border-2 border-white text-white font-semibold px-8 py-4 rounded text-base hover:bg-white/10 transition-colors"
             >
-              Call Us
+              {c.banner.cta2}
             </a>
           </div>
         </div>
@@ -60,13 +69,11 @@ export default function Process() {
       <section id="process" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">Our Simple Process</p>
+            <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">{c.eyebrow}</p>
             <h2 className="font-display font-bold text-navy" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
-              How It <span className="text-green-600">Works</span>
+              {c.title} <span className="text-green-600">{c.highlight}</span>
             </h2>
-            <p className="mt-4 text-gray max-w-xl mx-auto text-lg">
-              Getting started is easy. We make the whole process simple from your first call to your cleanest office ever.
-            </p>
+            <p className="mt-4 text-gray max-w-xl mx-auto text-lg">{c.sub}</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -1,32 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
-const services = [
-  {
-    title: "Office Cleaning & Sanitizing",
-    desc: "Our thorough office cleaning service ensures every desk, floor, bathroom, and common area is cleaned and sanitized consistently — every single visit.",
-  },
-  {
-    title: "Deep Cleaning Services",
-    desc: "Our intensive deep clean goes beyond the surface. We tackle built-up grime, appliances, fixtures, and hard-to-reach areas for a complete reset.",
-  },
-  {
-    title: "Scheduled Cleaning Plans",
-    desc: "Choose daily, weekly, or bi-weekly cleaning visits. We build a plan around your hours so there is zero disruption to your team and workflow.",
-  },
-  {
-    title: "Commercial Property Cleaning",
-    desc: "We proudly offer cleaning services for larger commercial spaces — coworking hubs, clinics, retail stores, and multi-tenant properties across the region.",
-  },
-];
-
 export default function Services() {
+  const { lang, t } = useLang();
+  const items = (t("services.items") as { title: string; desc: string }[]).slice(0, 4);
+
   return (
     <section id="services" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s, i) => (
+          {items.map((s, i) => (
             <motion.div
               key={s.title}
               initial={{ opacity: 0, y: 20 }}
@@ -39,7 +24,7 @@ export default function Services() {
               <h3 className="font-display font-bold text-navy text-lg mb-3 leading-snug">{s.title}</h3>
               <p className="text-gray text-sm leading-relaxed flex-1">{s.desc}</p>
               <Link href="/quote" className="mt-5 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors">
-                Learn More →
+                {lang === "sv" ? "Läs mer →" : "Learn More →"}
               </Link>
             </motion.div>
           ))}

@@ -1,38 +1,38 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
-const cards = [
-  {
-    title: "Satisfaction Guaranteed",
-    desc: "If you're not fully satisfied with any area we cleaned, contact us within 24 hours and we'll return to make it right — at no extra cost.",
-  },
-  {
-    title: "Consistent Every Visit",
-    desc: "We use a proven system so you get the same thorough clean every time. No shortcuts, no surprises — just a spotless office.",
-  },
-  {
-    title: "Vetted & Insured Team",
-    desc: "Every member of our team is background-checked, trained, and fully insured. You can trust us in your space.",
-  },
-  {
-    title: "Flexible Scheduling",
-    desc: "We work around your hours — early mornings, evenings, or weekends. Your business never has to stop for cleaning.",
-  },
-];
-
 export default function WhyUs() {
+  const { lang, t } = useLang();
+  const cards = (t("whyUs.items") as { title: string; desc: string }[]).slice(0, 4);
+
+  const sv = {
+    eyebrow: "Vårt löfte",
+    title: "Monarch",
+    highlight: "garantin",
+    sub: "Vi håller oss till en högre standard. Här är vad du kan förvänta dig varje gång vi dyker upp.",
+    cta: "Få din gratis offert idag",
+  };
+  const en = {
+    eyebrow: "Our Promise",
+    title: "The Monarch",
+    highlight: "Guarantee",
+    sub: "We hold ourselves to a higher standard. Here's what you can expect every single time we show up.",
+    cta: "Get Your Free Estimate Today",
+  };
+
+  const c = lang === "sv" ? sv : en;
+
   return (
     <section id="why-us" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">Our Promise</p>
+          <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">{c.eyebrow}</p>
           <h2 className="font-display font-bold text-navy" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
-            The Monarch <span className="text-green-600">Guarantee</span>
+            {c.title} <span className="text-green-600">{c.highlight}</span>
           </h2>
-          <p className="mt-4 text-gray max-w-xl mx-auto text-lg">
-            We hold ourselves to a higher standard. Here's what you can expect every single time we show up.
-          </p>
+          <p className="mt-4 text-gray max-w-xl mx-auto text-lg">{c.sub}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -45,6 +45,11 @@ export default function WhyUs() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="bg-white rounded-lg p-7 shadow-sm flex flex-col"
             >
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9l4 4 8-8" stroke="#5C9E28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
               <h3 className="font-display font-bold text-navy text-lg mb-3">{card.title}</h3>
               <p className="text-gray text-sm leading-relaxed flex-1">{card.desc}</p>
             </motion.div>
@@ -53,7 +58,7 @@ export default function WhyUs() {
 
         <div className="text-center">
           <Link href="/quote" className="btn-green px-10 py-4 text-base inline-block rounded">
-            Get Your Free Estimate Today
+            {c.cta}
           </Link>
         </div>
       </div>
