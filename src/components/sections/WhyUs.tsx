@@ -8,16 +8,12 @@ export default function WhyUs() {
   const cards = (t("whyUs.items") as { title: string; desc: string }[]).slice(0, 4);
 
   const sv = {
-    eyebrow: "Vårt löfte",
-    title: "Monarch",
-    highlight: "garantin",
+    heading: "Nöjdhetsgaranti",
     sub: "Vi håller oss till en högre standard. Här är vad du kan förvänta dig varje gång vi dyker upp.",
     cta: "Få din gratis offert idag",
   };
   const en = {
-    eyebrow: "Our Promise",
-    title: "The Monarch",
-    highlight: "Guarantee",
+    heading: "Satisfaction Guaranteed",
     sub: "We hold ourselves to a higher standard. Here's what you can expect every single time we show up.",
     cta: "Get Your Free Estimate Today",
   };
@@ -25,12 +21,11 @@ export default function WhyUs() {
   const c = lang === "sv" ? sv : en;
 
   return (
-    <section id="why-us" className="py-20 bg-gray-50">
+    <section id="why-us" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">{c.eyebrow}</p>
+        <div className="text-center mb-12">
           <h2 className="font-display font-bold text-navy" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
-            {c.title} <span className="text-green-600">{c.highlight}</span>
+            {c.heading}
           </h2>
           <p className="mt-4 text-gray max-w-xl mx-auto text-lg">{c.sub}</p>
         </div>
@@ -43,15 +38,15 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-white rounded-lg p-7 shadow-sm flex flex-col"
+              className="text-center px-4 py-6"
             >
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9l4 4 8-8" stroke="#5C9E28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 11l5 5 9-9" stroke="#5C9E28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <h3 className="font-display font-bold text-navy text-lg mb-3">{card.title}</h3>
-              <p className="text-gray text-sm leading-relaxed flex-1">{card.desc}</p>
+              <p className="text-gray text-sm leading-relaxed">{card.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -19,6 +19,7 @@ export default function DetailClean() {
       "Soptömning och återvinning",
     ],
     cta: "Få en gratis offert",
+    photoLabel: "Foto kommer snart",
   };
 
   const en = {
@@ -34,6 +35,7 @@ export default function DetailClean() {
       "Trash removal and recycling",
     ],
     cta: "Get A Free Estimate",
+    photoLabel: "Photo coming soon",
   };
 
   const c = lang === "sv" ? sv : en;
@@ -41,31 +43,21 @@ export default function DetailClean() {
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Photo */}
+          {/* Photo slot */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
           >
             <div
-              className="w-full rounded-lg overflow-hidden"
-              style={{ height: "460px" }}
+              className="w-full rounded-lg bg-gray-200 flex items-center justify-center"
+              style={{ height: "420px" }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80"
-                alt="Clean office"
-                className="w-full h-full object-cover"
-              />
+              <span className="text-gray-400 text-sm font-body">{c.photoLabel}</span>
             </div>
-            {/* Green accent block */}
-            <div
-              className="absolute -bottom-5 -right-5 w-32 h-32 rounded-lg hidden lg:block"
-              style={{ backgroundColor: "#1C2B1C" }}
-            />
           </motion.div>
 
           {/* Text */}

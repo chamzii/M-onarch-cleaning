@@ -8,7 +8,7 @@ export default function Services() {
   const items = (t("services.items") as { title: string; desc: string }[]).slice(0, 4);
 
   return (
-    <section id="services" className="py-16 bg-gray-50">
+    <section id="services" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((s, i) => (
@@ -18,14 +18,23 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="bg-white rounded-lg p-7 hover:shadow-md transition-shadow duration-300 flex flex-col"
+              className="flex flex-col"
             >
-              <div className="w-12 h-1.5 bg-green-600 rounded mb-5" />
-              <h3 className="font-display font-bold text-navy text-lg mb-3 leading-snug">{s.title}</h3>
-              <p className="text-gray text-sm leading-relaxed flex-1">{s.desc}</p>
-              <Link href="/quote" className="mt-5 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors">
-                {lang === "sv" ? "Läs mer →" : "Learn More →"}
-              </Link>
+              {/* Photo slot */}
+              <div className="w-full bg-gray-200 rounded-t-lg flex items-center justify-center" style={{ height: "180px" }}>
+                <span className="text-gray-400 text-sm font-body">
+                  {lang === "sv" ? "Foto kommer snart" : "Photo coming soon"}
+                </span>
+              </div>
+
+              {/* Card content */}
+              <div className="flex flex-col flex-1 pt-5 pb-6">
+                <h3 className="font-display font-bold text-navy text-lg mb-2 leading-snug">{s.title}</h3>
+                <p className="text-gray text-sm leading-relaxed flex-1">{s.desc}</p>
+                <Link href="/quote" className="mt-4 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors">
+                  {lang === "sv" ? "Läs mer →" : "Learn More →"}
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
