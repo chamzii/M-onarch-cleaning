@@ -24,36 +24,59 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   line-height: 1.7;
-  font-size: 17px;
+  font-size: 16px;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #F4F9F8; }
-::-webkit-scrollbar-thumb { background: #0ABFA3; border-radius: 2px; }
-
-.glass-nav {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid #E2E8F0;
-  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #5C9E28; border-radius: 4px; }
 
 .section-padding {
-  padding: 100px 0;
+  padding: 90px 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 70px 0;
+    padding: 60px 0;
   }
 }
 
-.card-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5C9E28;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
 }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(10, 191, 163, 0.12);
+.btn-green:hover {
+  background-color: #4A8020;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 2px solid white;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.btn-outline:hover {
+  background-color: white;
+  color: #5C9E28;
 }

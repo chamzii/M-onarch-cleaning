@@ -1,124 +1,76 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { Building2, Sparkles, Layers, CalendarCheck } from "lucide-react";
 import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
+
+const tiles = [
+  { icon: Building2, label: "Office Cleaning" },
+  { icon: Sparkles, label: "Deep Cleaning" },
+  { icon: Layers, label: "Floor Care" },
+  { icon: CalendarCheck, label: "Scheduled Plans" },
+];
 
 export default function Hero() {
   const { t } = useLang();
 
-  const bullets = [
-    t("hero.bullet1"),
-    t("hero.bullet2"),
-    t("hero.bullet3"),
-  ];
-
-  const stats = [
-    { value: t("hero.stat1"), label: t("hero.stat1Label") },
-    { value: t("hero.stat2"), label: t("hero.stat2Label") },
-    { value: t("hero.stat3"), label: t("hero.stat3Label") },
-  ];
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-navy overflow-hidden">
-      {/* Background subtle texture */}
-      <div className="absolute inset-0 opacity-[0.04]"
+    <section id="hero" className="relative flex flex-col" style={{ marginTop: "105px" }}>
+      {/* Hero image area */}
+      <div className="relative min-h-[580px] flex items-center"
         style={{
-          backgroundImage: "radial-gradient(circle, #0ABFA3 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          backgroundImage: "linear-gradient(rgba(20,40,20,0.62), rgba(20,40,20,0.62)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
-      />
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-teal/8 blur-[200px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left: text */}
-        <div>
+      >
+        <div className="max-w-7xl mx-auto px-6 w-full py-20">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-teal/10 border border-teal/20 rounded-full px-4 py-2 mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-teal" />
-            <span className="font-body text-sm text-teal font-medium">{t("hero.eyebrow")}</span>
-          </motion.div>
-
-          <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="font-display font-bold text-white leading-[1.1] tracking-tight"
-            style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)" }}
+            transition={{ duration: 0.7 }}
+            className="max-w-2xl"
           >
-            {t("hero.title")}<br />
-            <span className="text-teal">{t("hero.titleHighlight")}</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 font-body text-lg text-white/60 leading-relaxed max-w-xl"
-          >
-            {t("hero.subtitle")}
-          </motion.p>
-
-          <motion.ul
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="mt-8 space-y-3"
-          >
-            {bullets.map((b, i) => (
-              <li key={i} className="flex items-center gap-3 font-body text-white/70">
-                <CheckCircle size={18} className="text-teal shrink-0" />
-                {b}
-              </li>
-            ))}
-          </motion.ul>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4"
-          >
-            <Link href="/quote"
-              className="group inline-flex items-center justify-center gap-2.5 bg-teal hover:bg-teal-dark text-white font-body font-semibold px-8 py-4 rounded-xl text-lg transition-colors duration-200 shadow-lg shadow-teal/20">
-              {t("hero.cta1")}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a href="#services"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white/80 font-body font-medium px-8 py-4 rounded-xl text-lg hover:border-white/40 hover:text-white transition-all duration-200">
-              {t("hero.cta2")}
-            </a>
+            <h1 className="font-display font-bold text-white leading-tight"
+              style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
+              {t("hero.title")} <span style={{ color: "#7DC442" }}>{t("hero.titleHighlight")}</span>
+            </h1>
+            <p className="mt-5 text-white/80 text-lg leading-relaxed max-w-xl">
+              {t("hero.subtitle")}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/quote" className="btn-green text-base px-8 py-4">
+                {t("hero.cta1")}
+              </Link>
+              <a href="tel:+46XXXXXXXXX" className="btn-outline text-base px-8 py-4">
+                Call Us
+              </a>
+            </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Right: stats card */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="hidden lg:flex flex-col gap-5"
-        >
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-sm">
-            <p className="font-body text-white/50 text-sm uppercase tracking-widest mb-8">Trusted across the region</p>
-            <div className="grid grid-cols-3 gap-6">
-              {stats.map((s, i) => (
-                <div key={i} className="text-center">
-                  <p className="font-display font-bold text-teal text-4xl">{s.value}</p>
-                  <p className="font-body text-white/50 text-xs mt-2 uppercase tracking-wide">{s.label}</p>
+      {/* 4 service tiles */}
+      <div className="bg-white border-b border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {tiles.map((tile, i) => (
+              <motion.a
+                key={tile.label}
+                href="#services"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.08 }}
+                className="flex flex-col items-center gap-3 py-8 px-4 border-r border-border last:border-r-0 hover:bg-green-100 transition-colors duration-200 group"
+              >
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-600 transition-colors duration-200">
+                  <tile.icon size={24} className="text-green-600 group-hover:text-white transition-colors duration-200" />
                 </div>
-              ))}
-            </div>
-            <div className="mt-10 pt-8 border-t border-white/10">
-              <p className="font-body text-white/40 text-sm leading-relaxed">
-                Professional office cleaning for businesses across Herräng, Hallstavik, Rimbo and Norrtälje.
-              </p>
-            </div>
+                <span className="font-body font-semibold text-navy text-sm text-center">{tile.label}</span>
+              </motion.a>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

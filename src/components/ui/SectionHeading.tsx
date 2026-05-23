@@ -13,28 +13,24 @@ interface Props {
 export default function SectionHeading({ eyebrow, title, titleHighlight, subtitle, centered = true, light = false }: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6 }}
-      className={centered ? "text-center" : ""}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className={`mb-12 ${centered ? "text-center" : ""}`}
     >
       {eyebrow && (
-        <p className={`font-body text-sm font-semibold tracking-[0.2em] uppercase mb-4 ${light ? "text-teal-light/80" : "text-teal"}`}>
-          {eyebrow}
-        </p>
+        <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">{eyebrow}</p>
       )}
       <h2
-        className={`font-display font-bold leading-[1.1] tracking-tight ${light ? "text-white" : "text-navy"}`}
-        style={{ fontSize: "clamp(2rem, 4.5vw, 3.8rem)" }}
+        className={`font-display font-bold leading-tight ${light ? "text-white" : "text-navy"}`}
+        style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
       >
         {title}{" "}
-        {titleHighlight && (
-          <span className={light ? "text-teal" : "text-teal"}>{titleHighlight}</span>
-        )}
+        {titleHighlight && <span className="text-green-600">{titleHighlight}</span>}
       </h2>
       {subtitle && (
-        <p className={`mt-5 font-body text-lg max-w-2xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/70" : "text-gray"}`}>
+        <p className={`mt-4 text-lg max-w-2xl leading-relaxed ${centered ? "mx-auto" : ""} ${light ? "text-white/70" : "text-gray"}`}>
           {subtitle}
         </p>
       )}

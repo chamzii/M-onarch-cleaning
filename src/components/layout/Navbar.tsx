@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, Phone } from "lucide-react";
 import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
@@ -19,46 +19,58 @@ export default function Navbar() {
   const links = [
     { label: t("nav.services"), href: "#services" },
     { label: t("nav.whyUs"), href: "#why-us" },
+    { label: t("nav.process"), href: "#process" },
   ];
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3" : "bg-transparent py-5"}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
+        {/* Top bar */}
+        <div className="bg-green-600 hidden md:block">
+          <div className="max-w-7xl mx-auto px-6 py-2 flex justify-end items-center gap-6">
+            <a href="tel:+46XXXXXXXXX" className="flex items-center gap-2 text-white text-sm font-medium">
+              <Phone size={14} />
+              +46 XXX XXX XXX
+            </a>
+            <Link href="/quote" className="text-white text-sm font-semibold bg-white/20 hover:bg-white/30 px-4 py-1 rounded transition-colors">
+              {t("nav.quote")}
+            </Link>
+          </div>
+        </div>
+
+        {/* Main nav */}
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-teal flex items-center justify-center">
-              <span className="font-display font-bold text-white text-sm">M</span>
+            <div className="w-9 h-9 rounded-lg bg-green-600 flex items-center justify-center">
+              <span className="font-display font-bold text-white">M</span>
             </div>
-            <span className={`font-display font-bold text-lg tracking-tight ${scrolled ? "text-navy" : "text-white"}`}>
-              Monarch <span className="text-teal">Cleaning</span>
-            </span>
+            <div>
+              <span className="font-display font-bold text-navy text-lg leading-none block">Monarch</span>
+              <span className="font-body text-green-600 text-xs font-semibold tracking-widest uppercase">Cleaning</span>
+            </div>
           </a>
 
-          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <a key={l.href} href={l.href}
-                className={`font-body text-sm font-medium transition-colors duration-200 hover:text-teal ${scrolled ? "text-navy/70" : "text-white/80"}`}>
+                className="font-body text-sm font-semibold text-navy/70 hover:text-green-600 transition-colors uppercase tracking-wide">
                 {l.label}
               </a>
             ))}
           </nav>
 
-          {/* Right */}
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => setLang(lang === "en" ? "sv" : "en")}
-              className={`font-body text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-lg border transition-all duration-200 ${scrolled ? "border-border text-gray hover:border-teal hover:text-teal" : "border-white/30 text-white/70 hover:border-white hover:text-white"}`}>
+              className="font-body text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded border border-border text-gray hover:border-green-600 hover:text-green-600 transition-all">
               {lang === "en" ? "SV" : "EN"}
             </button>
-            <Link href="/quote"
-              className="font-body text-sm font-semibold px-5 py-2.5 rounded-xl bg-teal text-white hover:bg-teal-dark transition-colors duration-200 shadow-sm">
-              {t("nav.quote")}
+            <Link href="/quote" className="btn-green text-sm px-6 py-2.5">
+              Free Estimate
             </Link>
           </div>
 
-          <button onClick={() => setOpen(!open)} className={`md:hidden p-1 ${scrolled ? "text-navy" : "text-white"}`} aria-label="Toggle menu">
+          <button onClick={() => setOpen(!open)} className="md:hidden p-1 text-navy" aria-label="Toggle menu">
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -79,19 +91,14 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  className="font-display font-bold text-3xl text-navy py-4 border-b border-border hover:text-teal transition-colors">
+                  className="font-display font-bold text-2xl text-navy py-4 border-b border-border hover:text-green-600 transition-colors">
                   {l.label}
                 </motion.a>
               ))}
             </nav>
-            <div className="mt-8 flex items-center gap-3">
-              <button onClick={() => setLang(lang === "en" ? "sv" : "en")}
-                className="font-body text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-lg border border-border text-gray hover:border-teal hover:text-teal transition-all">
-                {lang === "en" ? "SV" : "EN"}
-              </button>
-              <Link href="/quote" onClick={() => setOpen(false)}
-                className="flex-1 flex items-center justify-center bg-teal text-white font-body font-semibold py-3.5 rounded-xl text-sm">
-                {t("nav.quote")}
+            <div className="mt-8">
+              <Link href="/quote" onClick={() => setOpen(false)} className="btn-green w-full text-center">
+                Get Free Estimate
               </Link>
             </div>
           </motion.div>
