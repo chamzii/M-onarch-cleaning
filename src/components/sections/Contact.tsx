@@ -42,7 +42,7 @@ export default function Contact() {
             className="space-y-5"
           >
             <a href={`tel:${t("contact.phone").replace(/\s/g, "")}`}
-              className="group flex items-center gap-5 bg-white rounded-2xl p-6 border border-silver hover:border-gold/30 card-hover transition-all duration-300">
+              className="group flex items-center gap-5 bg-white rounded-2xl p-6 border border-silver-dark hover:border-gold/30 card-hover transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
                 <Phone size={22} className="text-gold" />
               </div>
@@ -52,7 +52,7 @@ export default function Contact() {
               </div>
             </a>
             <a href={`mailto:${t("contact.email")}`}
-              className="group flex items-center gap-5 bg-white rounded-2xl p-6 border border-silver hover:border-gold/30 card-hover transition-all duration-300">
+              className="group flex items-center gap-5 bg-white rounded-2xl p-6 border border-silver-dark hover:border-gold/30 card-hover transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
                 <Mail size={22} className="text-gold" />
               </div>
@@ -69,7 +69,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="bg-white rounded-2xl p-8 border border-silver">
+            <div className="bg-white rounded-2xl p-8 border border-silver-dark shadow-sm">
               {sent ? (
                 <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                   className="flex flex-col items-center justify-center h-56 gap-4 text-center">

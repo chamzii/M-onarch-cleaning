@@ -9,7 +9,7 @@ export default function About() {
   const { t } = useLang();
 
   return (
-    <section id="about" className="section-padding bg-white relative overflow-hidden">
+    <section id="about" className="section-padding bg-silver relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold/4 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">

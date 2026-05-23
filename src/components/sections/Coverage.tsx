@@ -9,7 +9,7 @@ export default function Coverage() {
   const areas = t("coverage.areas") as unknown as string[];
 
   return (
-    <section id="coverage" className="section-padding bg-white">
+    <section id="coverage" className="section-padding bg-silver">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           eyebrow={t("coverage.eyebrow")}
@@ -32,7 +32,7 @@ export default function Coverage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-center gap-3 bg-snow rounded-xl px-5 py-4 border border-silver group hover:border-gold/30 hover:bg-gold/5 transition-all duration-300"
+                  className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-silver-dark group hover:border-gold/30 hover:bg-gold/5 transition-all duration-300 shadow-sm"
                 >
                   <CheckCircle2 size={18} className="text-gold shrink-0" />
                   <span className="font-body font-medium text-charcoal text-sm">{area}</span>

@@ -29,7 +29,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="card-hover bg-white rounded-2xl p-8 border border-silver group cursor-default"
+                className="card-hover bg-white rounded-2xl p-8 border border-silver-dark group cursor-default"
               >
                 <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors duration-300">
                   <Icon size={22} className="text-gold" />
