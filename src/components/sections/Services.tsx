@@ -3,6 +3,13 @@ import { motion } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
 
+const photos = [
+  "https://images.unsplash.com/photo-1497366754035-f200968a0e6e?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+];
+
 export default function Services() {
   const { lang, t } = useLang();
   const items = (t("services.items") as { title: string; desc: string }[]).slice(0, 4);
@@ -20,14 +27,9 @@ export default function Services() {
               transition={{ duration: 0.4, delay: i * 0.07 }}
               className="flex flex-col"
             >
-              {/* Photo slot */}
-              <div className="w-full bg-gray-200 rounded-t-lg flex items-center justify-center" style={{ height: "180px" }}>
-                <span className="text-gray-400 text-sm font-body">
-                  {lang === "sv" ? "Foto kommer snart" : "Photo coming soon"}
-                </span>
+              <div className="w-full rounded-t-lg overflow-hidden" style={{ height: "180px" }}>
+                <img src={photos[i]} alt={s.title} className="w-full h-full object-cover" />
               </div>
-
-              {/* Card content */}
               <div className="flex flex-col flex-1 pt-5 pb-6">
                 <h3 className="font-display font-bold text-navy text-lg mb-2 leading-snug">{s.title}</h3>
                 <p className="text-gray text-sm leading-relaxed flex-1">{s.desc}</p>
