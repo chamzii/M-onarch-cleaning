@@ -23,7 +23,7 @@ const cards = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="py-20 bg-gray-50 border-t border-gray-200">
+    <section id="why-us" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">Our Promise</p>
@@ -43,7 +43,7 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-white rounded-lg p-7 border-t-4 border-green-600 shadow-sm flex flex-col"
+              className="bg-white rounded-lg p-7 shadow-sm flex flex-col"
             >
               <h3 className="font-display font-bold text-navy text-lg mb-3">{card.title}</h3>
               <p className="text-gray text-sm leading-relaxed flex-1">{card.desc}</p>

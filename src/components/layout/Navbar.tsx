@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-200 ${scrolled ? "shadow-md" : "border-b border-gray-100"}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-200 ${scrolled ? "shadow-md" : ""}`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 shrink-0">

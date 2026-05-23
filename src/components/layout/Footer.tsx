@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-14 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs">© {year} Monarch Cleaning. All rights reserved.</p>
           <p className="text-white/20 text-xs">Herräng · Hallstavik · Rimbo · Norrtälje</p>
         </div>

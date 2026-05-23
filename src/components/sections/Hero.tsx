@@ -58,9 +58,9 @@ export default function Hero() {
       </div>
 
       {/* 4 area tiles */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {tiles.map((tile, i) => (
               <motion.a
                 key={tile.label}

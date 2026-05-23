@@ -23,7 +23,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 bg-gray-50 border-t border-gray-200">
+    <section id="services" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => (
@@ -33,7 +33,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="bg-white rounded-lg p-7 border border-gray-200 hover:shadow-md transition-shadow duration-300 flex flex-col"
+              className="bg-white rounded-lg p-7 hover:shadow-md transition-shadow duration-300 flex flex-col"
             >
               <div className="w-12 h-1.5 bg-green-600 rounded mb-5" />
               <h3 className="font-display font-bold text-navy text-lg mb-3 leading-snug">{s.title}</h3>
