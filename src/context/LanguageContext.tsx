@@ -7,7 +7,8 @@ type Lang = "en" | "sv";
 interface LanguageContextType {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  t: (key: string) => string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -15,14 +16,15 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("sv");
 
-  function t(key: string): string {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function t(key: string): any {
     const keys = key.split(".");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let val: any = translations[lang];
     for (const k of keys) {
       val = val?.[k];
     }
-    return typeof val === "string" ? val : key;
+    return val ?? key;
   }
 
   return (
