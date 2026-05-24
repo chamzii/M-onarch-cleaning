@@ -1,25 +1,29 @@
 import Navbar from "@/components/layout/Navbar";
-import Hero from "@/components/sections/Hero";
-import ServicesIntro from "@/components/sections/ServicesIntro";
-import Services from "@/components/sections/Services";
-import DetailClean from "@/components/sections/DetailClean";
-import WhyUs from "@/components/sections/WhyUs";
-import Process from "@/components/sections/Process";
 import Footer from "@/components/layout/Footer";
+import Hero from "@/components/home/Hero";
+import FlashSaleBanner from "@/components/home/FlashSaleBanner";
+import NewDrops from "@/components/home/NewDrops";
+import BestSellers from "@/components/home/BestSellers";
+import CollectionBanners from "@/components/home/CollectionBanners";
+import Reviews from "@/components/home/Reviews";
+import Newsletter from "@/components/home/Newsletter";
+import NewsletterPopup from "@/components/layout/NewsletterPopup";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Navbar />
       <main>
         <Hero />
-        <ServicesIntro />
-        <Services />
-        <DetailClean />
-        <WhyUs />
-        <Process />
+        <FlashSaleBanner />
+        <NewDrops />
+        <BestSellers />
+        <CollectionBanners />
+        <Reviews />
+        <Newsletter />
       </main>
       <Footer />
+      <NewsletterPopup />
     </>
   );
 }

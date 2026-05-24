@@ -1,114 +1,145 @@
 "use client";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
-import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
+import CartDrawer from "./CartDrawer";
+
+const navLinks = [
+  { label: "New In", href: "/collections/new" },
+  { label: "Dresses", href: "/collections/dresses" },
+  { label: "Sets", href: "/collections/sets" },
+  { label: "Clubwear", href: "/collections/clubwear" },
+  { label: "Corsets", href: "/collections/corsets" },
+  { label: "Heels", href: "/collections/heels" },
+  { label: "Sale", href: "/collections/sale", className: "text-[#FF1F8E]" },
+];
 
 export default function Navbar() {
-  const { lang, setLang } = useLang();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { dispatch, itemCount } = useCart();
+  const { items: wishlistItems } = useWishlist();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { label: lang === "sv" ? "Våra tjänster" : "Our Services", href: "#services" },
-    { label: lang === "sv" ? "Om oss" : "About Us", href: "#about" },
-    { label: lang === "sv" ? "Varför anlita oss?" : "Why Hire Us?", href: "#why-us" },
-    { label: lang === "sv" ? "Hur det fungerar" : "How It Works", href: "#process" },
-  ];
-
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-200 ${scrolled ? "shadow-lg" : ""}`}
-        style={{ backgroundColor: "#0F172A" }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+      {/* Top bar */}
+      <div className="bg-[#FF1F8E] text-white text-center py-2 text-xs font-body font-semibold tracking-widest uppercase z-50 relative">
+        Free shipping on orders over £60 · Use code NOIRE20 for 20% off
+      </div>
+
+      <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? "bg-[#0A0A0A]/95 backdrop-blur-md shadow-2xl" : "bg-[#0A0A0A]"}`}>
+        <div className="container flex items-center justify-between h-16 gap-4">
+          {/* Mobile menu btn */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden text-white cursor-pointer"
+            aria-label="Menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded bg-green-600 flex items-center justify-center">
-              <span className="font-display font-bold text-white text-lg">M</span>
-            </div>
-            <span className="font-display font-bold text-white text-xl">Monarch Cleaning</span>
-          </a>
+          <Link href="/" className="font-display text-2xl font-bold tracking-[0.25em] text-white shrink-0">
+            NOIRE
+          </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6 flex-1 justify-center">
-            {links.map((l) => (
-              <a
+          <nav className="hidden lg:flex items-center gap-7">
+            {navLinks.map((l) => (
+              <Link
                 key={l.href}
                 href={l.href}
-                className="font-body text-sm font-semibold text-white/70 hover:text-white transition-colors whitespace-nowrap"
+                className={`font-body text-xs font-semibold tracking-widest uppercase hover:text-[#FF1F8E] transition-colors ${l.className ?? "text-white/80"}`}
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          {/* Right side */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
-            <button
-              onClick={() => setLang(lang === "en" ? "sv" : "en")}
-              className="font-body text-xs font-bold tracking-widest uppercase text-white/50 hover:text-white transition-colors border border-white/20 px-3 py-1.5 rounded"
-            >
-              {lang === "en" ? "SV" : "EN"}
-            </button>
-            <a href="tel:+46XXXXXXXXX" className="flex items-center gap-2 font-body font-semibold text-white/80 text-sm hover:text-white transition-colors">
-              <Phone size={15} className="text-green-400" />
-              +46 XXX XXX XXX
-            </a>
-            <Link href="/quote" className="btn-green text-sm px-5 py-2.5 rounded">
-              {lang === "sv" ? "Gratis offert" : "Free Estimate"}
+          {/* Icons */}
+          <div className="flex items-center gap-4">
+            <Link href="/shop" aria-label="Search" className="text-white/70 hover:text-white transition-colors cursor-pointer hidden sm:block">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M13.5 13.5L17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
             </Link>
+            <Link href="/auth" aria-label="Account" className="text-white/70 hover:text-white transition-colors cursor-pointer hidden sm:block">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </Link>
+            <Link href="/wishlist" aria-label="Wishlist" className="relative text-white/70 hover:text-[#FF1F8E] transition-colors cursor-pointer">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 17s-7-4.5-7-9a4 4 0 018 0 4 4 0 018 0c0 4.5-7 9-7 9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+              </svg>
+              {wishlistItems.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
+                  {wishlistItems.length}
+                </span>
+              )}
+            </Link>
+            <button
+              onClick={() => dispatch({ type: "OPEN" })}
+              aria-label="Cart"
+              className="relative text-white/70 hover:text-white transition-colors cursor-pointer"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2 2h2l2.4 9.4a2 2 0 001.9 1.6h6.4a2 2 0 001.9-1.4L18 6H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="9" cy="17" r="1" fill="currentColor" />
+                <circle cx="15" cy="17" r="1" fill="currentColor" />
+              </svg>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
+                  {itemCount}
+                </span>
+              )}
+            </button>
           </div>
-
-          <button onClick={() => setOpen(!open)} className="lg:hidden text-white p-1">
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
       </header>
 
+      {/* Mobile nav */}
       <AnimatePresence>
-        {open && (
+        {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="fixed inset-0 z-40 pt-20 px-6 flex flex-col"
-            style={{ backgroundColor: "#0F172A" }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed top-[90px] left-0 right-0 bg-[#111111] z-30 border-b border-[#2D2D2D]"
           >
-            <nav className="flex flex-col">
-              {links.map((l, i) => (
-                <motion.a
+            <nav className="container py-4 flex flex-col gap-1">
+              {navLinks.map((l) => (
+                <Link
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="font-body font-semibold text-xl text-white py-4 border-b border-white/10 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                  className={`font-body text-sm font-semibold tracking-widest uppercase py-3 border-b border-[#2D2D2D] last:border-0 ${l.className ?? "text-white/80 hover:text-white"}`}
                 >
                   {l.label}
-                </motion.a>
+                </Link>
               ))}
+              <div className="flex gap-4 pt-4">
+                <Link href="/auth" onClick={() => setMobileOpen(false)} className="btn-outline flex-1 text-center py-3">Account</Link>
+                <Link href="/wishlist" onClick={() => setMobileOpen(false)} className="btn-outline flex-1 text-center py-3">Wishlist</Link>
+              </div>
             </nav>
-            <div className="mt-8 flex flex-col gap-3">
-              <a href="tel:+46XXXXXXXXX" className="flex items-center justify-center gap-2 border-2 border-white/30 text-white font-semibold py-3 rounded text-center">
-                <Phone size={16} /> {lang === "sv" ? "Ring oss" : "Call Us"}
-              </a>
-              <Link href="/quote" onClick={() => setOpen(false)} className="btn-green text-center py-3 rounded">
-                {lang === "sv" ? "Gratis offert" : "Free Estimate"}
-              </Link>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CartDrawer />
     </>
   );
 }

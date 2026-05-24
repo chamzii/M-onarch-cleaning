@@ -9,24 +9,38 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Plus Jakarta Sans'", "sans-serif"],
-        body: ["'Plus Jakarta Sans'", "sans-serif"],
+        display: ["'Cormorant Garamond'", "serif"],
+        body: ["'Montserrat'", "sans-serif"],
       },
       colors: {
-        green: {
-          DEFAULT: "#0369A1",
-          dark: "#0284C7",
-          light: "#EFF6FF",
-          100: "#EFF6FF",
-          400: "#93C5FD",
-          600: "#0369A1",
-          700: "#0284C7",
+        black: "#0A0A0A",
+        surface: "#111111",
+        "surface-2": "#1A1A1A",
+        border: "#2D2D2D",
+        pink: {
+          DEFAULT: "#FF1F8E",
+          dark: "#D4177A",
+          light: "#FF8EC7",
+          50: "#FFF0F7",
         },
-        dark: "#0F172A",
-        navy: "#0F172A",
-        gray: "#475569",
-        "light-gray": "#F8FAFC",
-        border: "#E2E8F0",
+        silver: "#9CA3AF",
+        nude: "#D4A5A5",
+        gold: "#C9A84C",
+        muted: "#6B7280",
+      },
+      animation: {
+        "marquee": "marquee 25s linear infinite",
+        "fade-up": "fadeUp 0.6s ease forwards",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
     },
   },

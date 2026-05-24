@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 
 export const metadata: Metadata = {
-  title: "Monarch Cleaning — Kontorsstädning Norrtälje & Herräng",
-  description: "Premium kontorsstädning i Norrtälje, Herräng, Hallstavik och Rimbo. Pålitlig, miljövänlig och professionell. | Professional office cleaning services in Norrtälje and Herräng, Sweden.",
-  keywords: "kontorsstädning Norrtälje, städfirma Herräng, office cleaning Hallstavik, commercial cleaning Rimbo, kontorsstädning Sverige",
+  title: "NOIRE — Dark. Feminine. Fearless.",
+  description: "Premium women's fashion. Clubwear, dresses, matching sets, corsets & statement pieces. Shop the new collection.",
+  keywords: "women's fashion, clubwear, bodycon dresses, matching sets, corsets, night out fashion, NOIRE",
   openGraph: {
-    title: "Monarch Cleaning — Premium Office Cleaning",
-    description: "Professional office cleaning from Herräng to Norrtälje. Reliable, eco-friendly, and premium quality.",
-    locale: "sv_SE",
+    title: "NOIRE — Dark. Feminine. Fearless.",
+    description: "Premium women's fashion. Luxury clubwear & dresses.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sv">
+    <html lang="en">
       <body>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <CartProvider>
+          <WishlistProvider>
+            {children}
+          </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   );

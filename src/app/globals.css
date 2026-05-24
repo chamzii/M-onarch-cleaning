@@ -1,82 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; padding: 0; margin: 0; }
+a { text-decoration: none; color: inherit; }
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: #F8FAFC;
-  color: #020617;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  line-height: 1.7;
-  font-size: 16px;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #0369A1; border-radius: 4px; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #FF1F8E; border-radius: 2px; }
 
-.section-padding {
-  padding: 90px 0;
-}
-
-@media (max-width: 768px) {
-  .section-padding {
-    padding: 60px 0;
-  }
-}
-
-.btn-green {
+/* Buttons */
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #0369A1;
+  background: #FF1F8E;
   color: white;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   padding: 14px 32px;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
-  cursor: pointer;
   border: none;
-  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
-
-.btn-green:hover {
-  background-color: #0284C7;
-}
+.btn-primary:hover { background: #D4177A; }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background: transparent;
   color: white;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  padding: 14px 32px;
-  border-radius: 6px;
-  border: 2px solid white;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 31px;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-outline:hover { background: white; color: #0A0A0A; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #FF1F8E;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 16px;
+  border: none;
+  padding: 0;
+}
+.btn-ghost:hover { color: #FF8EC7; }
+
+/* Utility */
+.section { padding: 80px 0; }
+@media (max-width: 768px) { .section { padding: 56px 0; } }
+
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 640px) { .container { padding: 0 16px; } }
+
+/* Marquee */
+.marquee-track { display: flex; width: max-content; }
+
+/* Product image hover */
+.product-img-wrap { overflow: hidden; }
+.product-img-wrap img, .product-img-wrap .next-img { transition: transform 0.6s ease; }
+.product-img-wrap:hover img, .product-img-wrap:hover .next-img { transform: scale(1.06); }
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-.btn-outline:hover {
-  background-color: white;
-  color: #0369A1;
+/* Pink gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #FF1F8E, #FF8EC7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
+/* Input styles */
+input, textarea, select {
+  background: #1A1A1A;
+  border: 1px solid #2D2D2D;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus { border-color: #FF1F8E; }
+input::placeholder, textarea::placeholder { color: #6B7280; }
