@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LanguageContext";
 import Link from "next/link";
+import Image from "next/image";
 
 const photos = [
   "https://images.unsplash.com/photo-1497366754035-f200968a0e6e?auto=format&fit=crop&w=600&q=80",
@@ -25,16 +26,28 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="flex flex-col"
+              className="flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden cursor-pointer"
             >
-              <div className="w-full rounded-t-lg overflow-hidden" style={{ height: "180px" }}>
-                <img src={photos[i]} alt={s.title} className="w-full h-full object-cover" />
+              <div className="relative w-full overflow-hidden" style={{ height: "190px" }}>
+                <Image
+                  src={photos[i]}
+                  alt={s.title}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
               </div>
-              <div className="flex flex-col flex-1 pt-5 pb-6">
-                <h3 className="font-display font-bold text-navy text-lg mb-2 leading-snug">{s.title}</h3>
+              <div className="flex flex-col flex-1 p-5">
+                <h3 className="font-display font-bold text-navy text-base mb-2 leading-snug">{s.title}</h3>
                 <p className="text-gray text-sm leading-relaxed flex-1">{s.desc}</p>
-                <Link href="/quote" className="mt-4 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors">
-                  {lang === "sv" ? "Läs mer →" : "Learn More →"}
+                <Link
+                  href="/quote"
+                  className="mt-4 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors inline-flex items-center gap-1"
+                >
+                  {lang === "sv" ? "Läs mer" : "Learn More"}
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </Link>
               </div>
             </motion.div>

@@ -30,34 +30,37 @@ export default function Process() {
     eyebrow: "Simple Process",
     title: "How It",
     highlight: "Works",
-    sub: "Getting started is easy. We make the whole process simple from your first call to your cleanest office ever.",
+    sub: "Getting started is easy. We make the whole process smooth from your first call to your cleanest office ever.",
   };
 
   const c = lang === "sv" ? sv : en;
 
   return (
     <>
-      {/* Dark green CTA banner */}
-      <div className="bg-green-700 py-16">
+      {/* Dark navy CTA banner */}
+      <div style={{ backgroundColor: "#0F172A" }} className="py-16">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2 className="font-display font-bold text-white leading-tight" style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)" }}>
+            <h2
+              className="font-display font-bold text-white leading-tight"
+              style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)" }}
+            >
               {c.banner.heading.split("\n").map((line, i) => (
                 <span key={i}>{line}{i === 0 && <br />}</span>
               ))}
             </h2>
-            <p className="mt-3 text-white/80 text-lg max-w-lg">{c.banner.sub}</p>
+            <p className="mt-3 text-white/70 text-lg max-w-lg">{c.banner.sub}</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white text-green-700 font-bold px-8 py-4 rounded text-base hover:bg-green-50 transition-colors"
+              className="inline-flex items-center justify-center bg-green-600 text-white font-bold px-8 py-4 rounded text-base hover:bg-green-700 transition-colors cursor-pointer"
             >
               {c.banner.cta1}
             </Link>
             <a
               href="tel:+46XXXXXXXXX"
-              className="inline-flex items-center justify-center border-2 border-white text-white font-semibold px-8 py-4 rounded text-base hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center border-2 border-white/30 text-white font-semibold px-8 py-4 rounded text-base hover:border-white hover:bg-white/10 transition-colors cursor-pointer"
             >
               {c.banner.cta2}
             </a>
@@ -65,16 +68,27 @@ export default function Process() {
         </div>
       </div>
 
-      {/* How It Works */}
+      {/* How It Works steps */}
       <section id="process" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">{c.eyebrow}</p>
-            <h2 className="font-display font-bold text-navy" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-14"
+          >
+            <p className="font-body text-green-600 font-semibold text-sm uppercase tracking-widest mb-3">
+              {c.eyebrow}
+            </p>
+            <h2
+              className="font-display font-bold text-navy"
+              style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
+            >
               {c.title} <span className="text-green-600">{c.highlight}</span>
             </h2>
             <p className="mt-4 text-gray max-w-xl mx-auto text-lg">{c.sub}</p>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, i) => (
