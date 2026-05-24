@@ -49,7 +49,7 @@ export default function Navbar() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="font-display text-2xl font-bold tracking-[0.25em] text-white shrink-0">
+          <Link href="/" className="font-display text-2xl font-bold tracking-[0.25em] text-white shrink-0 neon-text hover:text-[#FF1F8E] transition-colors duration-200">
             NOIRE
           </Link>
 

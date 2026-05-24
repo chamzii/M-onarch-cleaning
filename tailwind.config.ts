@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Cormorant Garamond'", "serif"],
-        body: ["'Montserrat'", "sans-serif"],
+        display: ["'Syne'", "sans-serif"],
+        body: ["'Manrope'", "sans-serif"],
       },
       colors: {
         black: "#0A0A0A",

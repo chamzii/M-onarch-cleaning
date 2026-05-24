@@ -42,7 +42,7 @@ export default function Hero() {
             <br />
             Feminine.
             <br />
-            <span className="text-gradient italic">Fearless.</span>
+            <span className="text-gradient italic neon-text">Fearless.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
