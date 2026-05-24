@@ -7,14 +7,20 @@ export default function NewsletterPopup() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
+  const dismiss = () => {
+    localStorage.setItem("noire_popup_dismissed", "1");
+    setVisible(false);
+  };
+
   useEffect(() => {
+    if (localStorage.getItem("noire_popup_dismissed")) return;
     const t = setTimeout(() => setVisible(true), 5000);
     return () => clearTimeout(t);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email) { setDone(true); setTimeout(() => setVisible(false), 2000); }
+    if (email) { setDone(true); setTimeout(() => dismiss(), 2000); }
   };
 
   return (
@@ -26,7 +32,7 @@ export default function NewsletterPopup() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm"
-            onClick={() => setVisible(false)}
+            onClick={dismiss}
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -36,7 +42,7 @@ export default function NewsletterPopup() {
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4 bg-[#111111] border border-[#2D2D2D] p-8 text-center"
           >
             <button
-              onClick={() => setVisible(false)}
+              onClick={dismiss}
               className="absolute top-4 right-4 text-[#6B7280] hover:text-white transition-colors cursor-pointer"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -64,7 +70,7 @@ export default function NewsletterPopup() {
               </form>
             )}
             <button
-              onClick={() => setVisible(false)}
+              onClick={dismiss}
               className="mt-4 text-[#6B7280] text-xs font-body hover:text-white transition-colors cursor-pointer"
             >
               No thanks, I'll pay full price

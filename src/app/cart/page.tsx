@@ -75,9 +75,12 @@ export default function CartPage() {
                     <span className="font-display text-2xl text-white">£{(total + (total >= 60 ? 0 : 4.99)).toFixed(2)}</span>
                   </div>
                 </div>
-                <div className="flex gap-2 mb-4">
-                  <input placeholder="Discount code" className="flex-1 text-xs" />
-                  <button className="btn-outline px-4 py-3 text-xs shrink-0">Apply</button>
+                <div className="flex flex-col gap-1.5 mb-4">
+                  <label htmlFor="discount" className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Discount Code</label>
+                  <div className="flex gap-2">
+                    <input id="discount" placeholder="e.g. NOIRE20" className="flex-1 text-xs" />
+                    <button className="btn-outline px-4 py-3 text-xs shrink-0 cursor-pointer">Apply</button>
+                  </div>
                 </div>
                 <Link href="/checkout" className="btn-primary w-full text-center block">Checkout</Link>
                 <p className="text-[#6B7280] text-xs text-center mt-3 font-body">Secure checkout · Free returns</p>

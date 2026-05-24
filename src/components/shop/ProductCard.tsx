@@ -70,7 +70,7 @@ export default function ProductCard({ product, index = 0 }: Props) {
           {/* Wishlist */}
           <button
             onClick={(e) => { e.preventDefault(); toggle(product); }}
-            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-[#0A0A0A]/60 backdrop-blur-sm hover:bg-[#0A0A0A]/90 transition-all cursor-pointer"
+            className="icon-btn absolute top-3 right-3 bg-[#0A0A0A]/60 backdrop-blur-sm hover:bg-[#0A0A0A]/90 transition-all cursor-pointer"
             aria-label="Add to wishlist"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill={has(product.id) ? "#FF1F8E" : "none"}>
@@ -82,9 +82,14 @@ export default function ProductCard({ product, index = 0 }: Props) {
           <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
             <button
               onClick={handleQuickAdd}
-              className="w-full bg-[#FF1F8E] text-white text-[11px] font-body font-bold tracking-widest uppercase py-3 hover:bg-[#D4177A] transition-colors cursor-pointer"
+              className="w-full bg-[#FF1F8E] text-white text-[11px] font-body font-bold tracking-widest uppercase py-3 hover:bg-[#D4177A] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
             >
-              {added ? "Added ✓" : "Quick Add"}
+              {added ? (
+                <>
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7l3.5 3.5L11 3" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  Added
+                </>
+              ) : "Quick Add"}
             </button>
           </div>
         </div>
@@ -95,9 +100,9 @@ export default function ProductCard({ product, index = 0 }: Props) {
             {product.name}
           </p>
           <div className="flex items-center gap-2 mt-1.5">
-            <span className="font-body font-semibold text-white text-sm">£{product.price}</span>
+            <span className="font-body font-semibold text-white text-sm">£{product.price.toFixed(2)}</span>
             {product.originalPrice && (
-              <span className="font-body text-[#6B7280] text-xs line-through">£{product.originalPrice}</span>
+              <span className="font-body text-[#6B7280] text-xs line-through">£{product.originalPrice.toFixed(2)}</span>
             )}
           </div>
           {/* Stars */}

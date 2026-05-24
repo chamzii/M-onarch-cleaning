@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/shop/ProductCard";
@@ -22,6 +22,7 @@ export default function ProductPage() {
   const [activeImg, setActiveImg] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<string | null>("details");
   const [added, setAdded] = useState(false);
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
 
   const { dispatch } = useCart();
   const { toggle, has } = useWishlist();
@@ -83,7 +84,7 @@ export default function ProductPage() {
                       onClick={() => setActiveImg(i)}
                       className={`relative w-20 aspect-[3/4] overflow-hidden cursor-pointer ${activeImg === i ? "ring-2 ring-[#FF1F8E]" : "opacity-60 hover:opacity-100"}`}
                     >
-                      <Image src={img} alt="" fill className="object-cover" sizes="80px" />
+                      <Image src={img} alt={`${product.name} view ${i + 1}`} fill className="object-cover" sizes="80px" />
                     </button>
                   ))}
                 </div>
@@ -124,13 +125,13 @@ export default function ProductPage() {
 
               {/* Price */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-display text-3xl font-semibold text-white">£{product.price}</span>
+                <span className="font-display text-3xl font-semibold text-white">£{product.price.toFixed(2)}</span>
                 {product.originalPrice && (
-                  <span className="font-body text-lg text-[#6B7280] line-through">£{product.originalPrice}</span>
+                  <span className="font-body text-lg text-[#6B7280] line-through">£{product.originalPrice.toFixed(2)}</span>
                 )}
                 {product.originalPrice && (
                   <span className="bg-[#FF1F8E]/10 text-[#FF1F8E] text-xs font-body font-bold px-2 py-1">
-                    Save £{product.originalPrice - product.price}
+                    Save £{(product.originalPrice - product.price).toFixed(2)}
                   </span>
                 )}
               </div>
@@ -157,7 +158,7 @@ export default function ProductPage() {
               <div className="mb-6">
                 <div className="flex items-center justify-between mb-2">
                   <p className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Size: <span className="text-white">{selectedSize}</span></p>
-                  <button className="font-body text-xs text-[#FF1F8E] hover:text-[#FF8EC7] transition-colors cursor-pointer">Size Guide</button>
+                  <button onClick={() => setSizeGuideOpen(true)} className="font-body text-xs text-[#FF1F8E] hover:text-[#FF8EC7] transition-colors cursor-pointer">Size Guide</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {product.sizes.map((s) => (
@@ -174,8 +175,13 @@ export default function ProductPage() {
 
               {/* CTA */}
               <div className="flex flex-col gap-3 mb-8">
-                <button onClick={handleAddToCart} className="btn-primary w-full py-4 text-sm">
-                  {added ? "✓ Added to Cart" : "Add to Cart"}
+                <button onClick={handleAddToCart} className="btn-primary w-full py-4 text-sm flex items-center justify-center gap-2">
+                  {added ? (
+                    <>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3.5 3.5L12 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      Added to Cart
+                    </>
+                  ) : "Add to Cart"}
                 </button>
                 <Link href="/checkout" className="btn-outline w-full py-4 text-sm text-center">
                   Buy It Now
@@ -198,20 +204,23 @@ export default function ProductPage() {
                       className="flex items-center justify-between w-full py-4 cursor-pointer"
                     >
                       <span className="font-body font-semibold text-sm tracking-wide text-white">{acc.label}</span>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={`text-[#9CA3AF] transition-transform ${openAccordion === acc.key ? "rotate-180" : ""}`}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={`text-[#9CA3AF] transition-transform duration-200 ${openAccordion === acc.key ? "rotate-180" : ""}`}>
                         <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                       </svg>
                     </button>
-                    {openAccordion === acc.key && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="pb-4"
-                      >
-                        <p className="font-body text-sm text-[#9CA3AF] leading-relaxed">{acc.content}</p>
-                      </motion.div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {openAccordion === acc.key && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="font-body text-sm text-[#9CA3AF] leading-relaxed pb-4">{acc.content}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </div>
@@ -233,10 +242,52 @@ export default function ProductPage() {
 
       {/* Mobile sticky bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#111111] border-t border-[#2D2D2D] p-4 lg:hidden z-30">
-        <button onClick={handleAddToCart} className="btn-primary w-full py-4">
-          {added ? "✓ Added to Cart" : `Add to Cart — £${product.price}`}
+        <button onClick={handleAddToCart} className="btn-primary w-full py-4 flex items-center justify-center gap-2">
+          {added ? (
+            <>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3.5 3.5L12 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Added to Cart
+            </>
+          ) : `Add to Cart — £${product.price.toFixed(2)}`}
         </button>
       </div>
+
+      {/* Size Guide Modal */}
+      <AnimatePresence>
+        {sizeGuideOpen && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/70 z-50 backdrop-blur-sm" onClick={() => setSizeGuideOpen(false)} />
+            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 40 }} transition={{ duration: 0.25 }} className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg bg-[#111111] border border-[#2D2D2D] p-8">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-display text-2xl font-bold text-white">Size Guide</h3>
+                <button onClick={() => setSizeGuideOpen(false)} className="icon-btn text-[#6B7280] hover:text-white transition-colors cursor-pointer">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                </button>
+              </div>
+              <p className="font-body text-xs text-[#9CA3AF] mb-4">All measurements in centimetres. Model is 5&apos;9&quot; and wears size S.</p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm font-body">
+                  <thead>
+                    <tr className="border-b border-[#2D2D2D]">
+                      {["Size", "UK", "Bust", "Waist", "Hips"].map((h) => (
+                        <th key={h} className="text-left py-2 pr-4 text-[#FF1F8E] font-semibold tracking-widest uppercase text-xs">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#2D2D2D]">
+                    {[["XS","6","80","60","86"],["S","8","84","64","90"],["M","10","88","68","94"],["L","12","94","74","100"],["XL","14","100","80","106"]].map(([size,...vals]) => (
+                      <tr key={size}>
+                        <td className="py-3 pr-4 text-white font-semibold">{size}</td>
+                        {vals.map((v, i) => <td key={i} className="py-3 pr-4 text-[#9CA3AF]">{v}</td>)}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

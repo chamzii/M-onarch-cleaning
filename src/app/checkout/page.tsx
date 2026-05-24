@@ -19,7 +19,7 @@ export default function CheckoutPage() {
       <main className="bg-[#0A0A0A] min-h-screen py-12">
         <div className="container max-w-5xl">
           <div className="text-center mb-10">
-            <Link href="/" className="font-display text-3xl font-bold tracking-[0.3em] text-white">NOIRE</Link>
+            <Link href="/" className="font-display text-3xl font-bold tracking-[0.3em] text-white neon-text">NOIRE</Link>
           </div>
 
           {/* Steps */}
@@ -42,18 +42,42 @@ export default function CheckoutPage() {
                 {step === "info" && (
                   <>
                     <h2 className="font-display text-2xl text-white font-semibold mb-2">Contact</h2>
-                    <input placeholder="Email Address" type="email" />
+                    <label className="flex flex-col gap-1.5">
+                      <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Email Address</span>
+                      <input placeholder="hello@example.com" type="email" />
+                    </label>
                     <h2 className="font-display text-2xl text-white font-semibold mt-4 mb-2">Shipping Address</h2>
                     <div className="grid grid-cols-2 gap-4">
-                      <input placeholder="First Name" />
-                      <input placeholder="Last Name" />
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">First Name</span>
+                        <input placeholder="Jane" />
+                      </label>
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Last Name</span>
+                        <input placeholder="Doe" />
+                      </label>
                     </div>
-                    <input placeholder="Address" />
-                    <input placeholder="Apartment, suite, etc. (optional)" />
+                    <label className="flex flex-col gap-1.5">
+                      <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Address</span>
+                      <input placeholder="123 Example Street" />
+                    </label>
+                    <label className="flex flex-col gap-1.5">
+                      <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Apartment, suite, etc. (optional)</span>
+                      <input placeholder="Flat 2" />
+                    </label>
                     <div className="grid grid-cols-3 gap-4">
-                      <input placeholder="City" />
-                      <input placeholder="Postcode" />
-                      <input placeholder="Country" defaultValue="UK" />
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">City</span>
+                        <input placeholder="London" />
+                      </label>
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Postcode</span>
+                        <input placeholder="SW1A 1AA" />
+                      </label>
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Country</span>
+                        <input placeholder="UK" defaultValue="UK" />
+                      </label>
                     </div>
                   </>
                 )}
@@ -74,12 +98,24 @@ export default function CheckoutPage() {
                 {step === "payment" && (
                   <>
                     <h2 className="font-display text-2xl text-white font-semibold mb-4">Payment</h2>
-                    <input placeholder="Card Number" />
+                    <label className="flex flex-col gap-1.5">
+                      <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Card Number</span>
+                      <input placeholder="1234 5678 9012 3456" />
+                    </label>
                     <div className="grid grid-cols-2 gap-4">
-                      <input placeholder="MM / YY" />
-                      <input placeholder="CVV" />
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Expiry</span>
+                        <input placeholder="MM / YY" />
+                      </label>
+                      <label className="flex flex-col gap-1.5">
+                        <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">CVV</span>
+                        <input placeholder="•••" />
+                      </label>
                     </div>
-                    <input placeholder="Name on Card" />
+                    <label className="flex flex-col gap-1.5">
+                      <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Name on Card</span>
+                      <input placeholder="Jane Doe" />
+                    </label>
                   </>
                 )}
                 <button type="submit" className="btn-primary w-full py-4 mt-2">
