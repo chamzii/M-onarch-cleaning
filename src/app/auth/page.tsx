@@ -32,10 +32,26 @@ export default function AuthPage() {
           </div>
 
           <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-            {mode === "signup" && <input placeholder="Full Name" type="text" />}
-            <input placeholder="Email Address" type="email" />
-            <input placeholder="Password" type="password" />
-            {mode === "signup" && <input placeholder="Confirm Password" type="password" />}
+            {mode === "signup" && (
+              <label className="flex flex-col gap-1.5">
+                <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Full Name</span>
+                <input placeholder="Jane Doe" type="text" />
+              </label>
+            )}
+            <label className="flex flex-col gap-1.5">
+              <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Email Address</span>
+              <input placeholder="hello@example.com" type="email" />
+            </label>
+            <label className="flex flex-col gap-1.5">
+              <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Password</span>
+              <input placeholder="••••••••" type="password" />
+            </label>
+            {mode === "signup" && (
+              <label className="flex flex-col gap-1.5">
+                <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Confirm Password</span>
+                <input placeholder="••••••••" type="password" />
+              </label>
+            )}
             {mode === "login" && (
               <div className="text-right">
                 <a href="#" className="font-body text-xs text-[#9CA3AF] hover:text-[#FF1F8E] transition-colors">Forgot password?</a>

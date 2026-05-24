@@ -68,24 +68,24 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="flex items-center gap-4">
-            <Link href="/shop" aria-label="Search" className="text-white/70 hover:text-white transition-colors cursor-pointer hidden sm:block">
+            <Link href="/shop" aria-label="Search" className="icon-btn text-white/70 hover:text-white transition-colors duration-200 hidden sm:inline-flex">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5" />
                 <path d="M13.5 13.5L17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </Link>
-            <Link href="/auth" aria-label="Account" className="text-white/70 hover:text-white transition-colors cursor-pointer hidden sm:block">
+            <Link href="/auth" aria-label="Account" className="icon-btn text-white/70 hover:text-white transition-colors duration-200 hidden sm:inline-flex">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5" />
                 <path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </Link>
-            <Link href="/wishlist" aria-label="Wishlist" className="relative text-white/70 hover:text-[#FF1F8E] transition-colors cursor-pointer">
+            <Link href="/wishlist" aria-label="Wishlist" className="icon-btn relative text-white/70 hover:text-[#FF1F8E] transition-colors duration-200">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 17s-7-4.5-7-9a4 4 0 018 0 4 4 0 018 0c0 4.5-7 9-7 9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
               </svg>
               {wishlistItems.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
                   {wishlistItems.length}
                 </span>
               )}
@@ -93,7 +93,7 @@ export default function Navbar() {
             <button
               onClick={() => dispatch({ type: "OPEN" })}
               aria-label="Cart"
-              className="relative text-white/70 hover:text-white transition-colors cursor-pointer"
+              className="icon-btn relative text-white/70 hover:text-white transition-colors duration-200"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M2 2h2l2.4 9.4a2 2 0 001.9 1.6h6.4a2 2 0 001.9-1.4L18 6H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -101,7 +101,7 @@ export default function Navbar() {
                 <circle cx="15" cy="17" r="1" fill="currentColor" />
               </svg>
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#FF1F8E] rounded-full text-[9px] font-bold flex items-center justify-center text-white">
                   {itemCount}
                 </span>
               )}

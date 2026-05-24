@@ -124,6 +124,23 @@ body {
 /* cursor-pointer on all interactive elements */
 button, a, [role="button"], label[for], select { cursor: pointer; }
 
+/* Focus states — visible keyboard navigation rings */
+:focus-visible {
+  outline: 2px solid #FF1F8E;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(255, 31, 142, 0.2);
+}
+button:focus-visible, a:focus-visible { border-radius: 2px; }
+
+/* Touch targets — minimum 44x44px for icon buttons */
+.icon-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }

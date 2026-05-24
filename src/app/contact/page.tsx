@@ -36,20 +36,35 @@ export default function ContactPage() {
               <p className="font-body text-[#9CA3AF] text-sm">We'll be in touch within 24 hours.</p>
             </div>
           ) : (
-            <form className="flex flex-col gap-4 bg-[#111111] p-8" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+            <form className="flex flex-col gap-5 bg-[#111111] p-8" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
               <div className="grid sm:grid-cols-2 gap-4">
-                <input placeholder="First Name" required />
-                <input placeholder="Last Name" required />
+                <label className="flex flex-col gap-1.5">
+                  <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">First Name</span>
+                  <input placeholder="Jane" required />
+                </label>
+                <label className="flex flex-col gap-1.5">
+                  <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Last Name</span>
+                  <input placeholder="Doe" required />
+                </label>
               </div>
-              <input placeholder="Email Address" type="email" required />
-              <select>
-                <option>Order Query</option>
-                <option>Returns & Exchanges</option>
-                <option>Sizing Help</option>
-                <option>Press & Collaborations</option>
-                <option>Other</option>
-              </select>
-              <textarea placeholder="Your message..." rows={5} required />
+              <label className="flex flex-col gap-1.5">
+                <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Email Address</span>
+                <input placeholder="hello@example.com" type="email" required />
+              </label>
+              <label className="flex flex-col gap-1.5">
+                <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Topic</span>
+                <select>
+                  <option>Order Query</option>
+                  <option>Returns & Exchanges</option>
+                  <option>Sizing Help</option>
+                  <option>Press & Collaborations</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label className="flex flex-col gap-1.5">
+                <span className="font-body text-xs font-semibold tracking-widest uppercase text-[#9CA3AF]">Message</span>
+                <textarea placeholder="How can we help?" rows={5} required />
+              </label>
               <button type="submit" className="btn-primary w-full py-4">Send Message</button>
             </form>
           )}
