@@ -27,7 +27,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-200 ${scrolled ? "shadow-lg" : ""}`}
-        style={{ backgroundColor: "#1C2B1C" }}
+        style={{ backgroundColor: "#0F172A" }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
           {/* Logo */}
@@ -81,7 +81,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             className="fixed inset-0 z-40 pt-20 px-6 flex flex-col"
-            style={{ backgroundColor: "#1C2B1C" }}
+            style={{ backgroundColor: "#0F172A" }}
           >
             <nav className="flex flex-col">
               {links.map((l, i) => (
