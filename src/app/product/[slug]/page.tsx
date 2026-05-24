@@ -61,7 +61,7 @@ export default function ProductPage() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Images */}
             <div>
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#111111]">
+              <div className="relative overflow-hidden bg-[#111111] aspect-[4/5] lg:aspect-auto lg:h-[calc(100vh-144px)]">
                 <Image
                   src={product.images[activeImg]}
                   alt={product.name}
@@ -92,7 +92,7 @@ export default function ProductPage() {
             </div>
 
             {/* Info */}
-            <div className="lg:sticky lg:top-24 lg:self-start">
+            <div className="lg:sticky lg:top-[88px] lg:self-start lg:max-h-[calc(100vh-144px)] lg:overflow-y-auto lg:pr-2">
               <div className="flex items-start justify-between gap-4 mb-2">
                 <div>
                   <p className="font-body text-[#9CA3AF] text-xs tracking-widest uppercase mb-2 capitalize">{product.category}</p>
