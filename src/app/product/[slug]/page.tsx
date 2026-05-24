@@ -100,7 +100,7 @@ export default function ProductPage() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.35 }}
-                      className="absolute inset-0"
+                      className="relative w-full h-full"
                     >
                       <Image
                         src={product.images[activeImg]}
